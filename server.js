@@ -65,7 +65,8 @@ var ipMiddleware = function(req, res, next) {
 
 function event_msg(msg,client,job){
 	// console.log(msg,client,job);
-	if(!_.isUndefined(job.id)){
+
+	if(!_.isUndefined(job) && !_.isUndefined(job.id)){
 		console.log(' > '+ msg + ( !_.isUndefined(job.id) ? ' [JOB:ID '+ job.id +']': ''));
 	}
 	else{
