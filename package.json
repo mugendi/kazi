@@ -1,6 +1,6 @@
 {
   "name": "kazi",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "RESTFul Job-Queue Server with API to serve jobs to remote workers. Workers connect, identify themselves & request to be allocated work. The server allocates work through a Priority Job Queue or FIFO Job Queue. Workers report when they finish jobs or are banned (timeout) from accessing more jobs!",
   "main": "server.js",
   "scripts": {
