@@ -1,16 +1,27 @@
+
 {
-	
+	"timeZone": "Africa/Nairobi ",
+	"logger":{
+		"client":"firebase",
+		"options":{
+			"data_url":"https://kazilogs.firebaseio.com"
+		}
 
-	"client":"firebase",
-	"options":{
-		"data_url":"https://kazi.firebaseio.com"
-	}
+		//You can also save job logs to Elastic Search if you wish to do other cool stuff like aggregations
+		// client:'elasticsearch',
+		// options:{
+		//   host: 'localhost:9200',
+		//   // log: 'trace',
+		//   index:'kazi'
+		// }
+	},
 
-	//You can also save job logs to Elastic Search if you wish to do other cool stuff like aggregations
-	// client:'elasticsearch',
-	// options:{
-	//   host: 'localhost:9200',
-	//   // log: 'trace',
-	//   index:'kazi'
-	// }
+	"maxClients":100,
+	"timeoutLazyClientsFor":60000,
+	"expireClientsAfter":3600,
+	"strictFIFO":false,
+	"autoclearFinishedJobs":true,
+	"rescheduleStuckJobsAfter":300,
+	"runMultipleJobs":false
 }
+
