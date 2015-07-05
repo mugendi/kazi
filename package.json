@@ -22,15 +22,21 @@
   "dependencies": {
     "body-parser": "^1.12.4",
     "chance": "^0.7.5",
+    "chokidar": "^1.0.3",
+    "clear-require": "^1.0.1",
     "cluster": "^0.7.7",
+    "elasticsearch": "^5.0.0",
     "events": "^1.0.2",
     "express": "^4.12.4",
+    "firebase": "^2.2.7",
     "ip": "^0.3.3",
     "lodash": "^3.9.3",
     "moment": "^2.10.3",
     "path": "^0.11.14",
     "redis": "^0.12.1",
+    "redis-scanstreams": "^1.0.3",
     "request": "^2.57.0",
+    "stream-to-array": "^2.0.2",
     "util": "^0.10.3"
   }
 }

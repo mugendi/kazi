@@ -8,7 +8,8 @@ var request = require('request');
 
 var jobs=[];
 var jobTypes=[
-		'getTitles'
+		'twitter',
+		'facebook'
 	];
 
 
@@ -16,10 +17,11 @@ jobTypes.forEach(function(name,id){
 	
 	jobs.push(
 		{
-			priority:'normal',
-			id:id+1,
-			name:name,
-			terminateJobAfter: (5*1000*60) //5 mins
+			priority:_.sample(['normal','high']) ,
+			id:name+':'+id+':'+(new Date().getTime()), //Twitter:1:1
+			name:name, //twitter
+			terminateJobAfter: (5*1000*60), //5 mins
+			delay:20
 		}
 	);
 	

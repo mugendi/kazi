@@ -1,0 +1,109 @@
+<html>
+  <head>
+
+  	
+    <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+  	<script src='http://sugarjs.com/release/current/sugar.min.js'></script>
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+    
+
+    
+
+  </head>
+  <body style="margin-top:50px">
+
+  	<div class="container">
+
+	  	<div class="panel panel-primary">
+		  <!-- Default panel contents -->
+		  <div class="panel-heading">KAZI Real Time Jobs Visualizer</div>
+		  <div class="panel-body">
+		    <p>This panel helps you visualize (via <a href="https://www.firebase.com" target="_blank">Firebase</a>) what Kazi is busy doing in near-realtime. </p>
+
+		     <div id='messagesDiv'> <h2>Loading Data. Please Wait...</h2></div>
+		  </div>
+
+		</div>
+
+    </div>
+    
+    <script>
+    $(function(){
+		var ref = new Firebase('https://kazilogs.firebaseio.com');
+
+   		var str=$('#messagesDiv').html();
+
+		ref.on("value", function(snapshot) {
+			var a = snapshot.exportVal();
+			var j=''
+			var obj={
+				msg:a.msg
+			}
+
+			//table seperator row
+			obj['-']=''
+
+			if(typeof a.client !=='undefined'){
+				for(var i in a.client){
+					j='client: '+i.replace(/client_?/ig,'');
+					obj[j]=a.client[i]
+				}
+			}
+
+			//table seperator ro
+			obj['--']=''
+
+			if(typeof a.job !=='undefined'){
+				for(var i in a.job){
+					j='job: '+i.replace(/job_?/ig,'');
+					// console.log(j)
+					obj[j]=a.job[i];
+
+					if(i=='priority'){
+						obj[j]+=' - ( '+Date.create(a.job[i]*1000).secondsAgo()+' seconds ago )'
+					}
+				}
+			}
+			
+			if($('#messagesDiv table').length==0){
+	
+				var html = '<table class="table table-bordered">';
+				$.each(obj, function(key, value){
+
+					if(key.indexOf('-')==0){
+						html += '<tr ><td class="" style="border:none;"></td><td class="" style="border:none;"></td></tr>';
+					}
+					else{
+						html += '<tr>';
+			            html += '<td style="width:30%" class="active"><strong>' + key.dasherize().replace(/-/g,' ').capitalize(true) + '</strong></td>';
+			            html += '<td class="value" data-assign="{' + key + '}" ></td>';
+			            html += '</tr>';	
+					}
+		        });
+		        html += '</table>';
+
+		        $('#messagesDiv').html(html);
+		        assign(obj)
+			}
+			else{ assign(obj)		}
+			
+		});
+
+		function assign(obj){
+			$('#messagesDiv table .value').each(function(){
+				var el=$(this);
+				el.text(el.data('assign').assign(obj).replace(/\{.+\}/,'--') )
+			})
+		}
+    });
+      
+
+    </script>
+  </body>
+</html>

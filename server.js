@@ -3,6 +3,7 @@ var path = require('path');
 var _ = require('lodash');
 var ip = require('ip');
 var ip = ip.address();
+var moment = require('moment');
 
 var Queue=require('./lib/queue.js');
 
@@ -63,16 +64,22 @@ var ipMiddleware = function(req, res, next) {
 
 });
 
+
+function now(){
+	return moment().format('MMMM Do YYYY, h:mm:ss a');
+}
+
 function event_msg(msg,client,job){
 	// console.log(msg,client,job);
 
 	if(!_.isUndefined(job) && !_.isUndefined(job.id)){
-		console.log(' > '+ msg + ( !_.isUndefined(job.id) ? ' [JOB:ID '+ job.id +']': ''));
+		console.log(' > '+'['+now()+'] '+ msg + ( !_.isUndefined(job.id) ? ' [JOB:ID '+ job.id +']': ''));
+
 	}
 	else{
 
 		// console.log(job);
-		console.log(' > '+ msg );
+		console.log(' > '+'['+now()+'] '+ msg );
 	}
 }
 
@@ -81,7 +88,10 @@ function event_msg(msg,client,job){
 app.set('port', process.env.PORT || 2016);
 
 app.get('/' , function(req, res) {
-	res.end('sss')
+	res.end({
+		server:'KAZI',
+		msg:'We are ON!'
+	})
 });
 
 app.get('/listclient' , function(req, res) {
@@ -123,10 +133,13 @@ app.post('/queuejob' , function(req, res) {
 
 
 app.post('/requestjob' , function(req, res) {
-	
+
+	var client=req.body.client || req.body,
+		jobIds=req.body.jobIds || [];
+
 	//listClient
-	queue.requestJob(req.body,function(err,job){
-		
+	queue.requestJob(client,function(err,job){
+		// console.log(job)
 		if(err){
 			res.send({});			
 		}
@@ -134,7 +147,7 @@ app.post('/requestjob' , function(req, res) {
 			res.send(job);
 		}
 		
-	});
+	},jobIds);
 
 
 });
@@ -156,6 +169,17 @@ app.post('/updateJob' , function(req, res) {
 	});
 
 });
+
+
+/*
+	To View Jobs. Only implemented Firebase....
+
+*/
+
+
+app.use('/firebase',express.static(path.join(__dirname, 'www','firebase'),{}));
+
+
 
 
 /*
