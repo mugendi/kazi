@@ -94,19 +94,19 @@ app.get('/' , function(req, res) {
 	})
 });
 
-app.get('/listclient' , function(req, res) {
+app.post('/listclient' , function(req, res) {
 
-	// console.log(req.query);
+	console.log(req.body);
 
 	var client={
 		ip:ip,
-		name:req.query.name
+		name:req.body.name,
+		jobIds:req.body.jobIds
 	}
 
 
 	//listClient
 	queue.listClient(client,function(err,client){
-
 		res.send(client);
 	});
 

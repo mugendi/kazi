@@ -52,7 +52,7 @@
 			if(typeof a.client !=='undefined'){
 				for(var i in a.client){
 					j='client: '+i.replace(/client_?/ig,'');
-					obj[j]=a.client[i]
+					obj[j]=(typeof a.client[i] == 'object')? Object.values(a.client[i]):a.client[i]
 				}
 			}
 
@@ -63,7 +63,7 @@
 				for(var i in a.job){
 					j='job: '+i.replace(/job_?/ig,'');
 					// console.log(j)
-					obj[j]=a.job[i];
+					obj[j]=(typeof a.job[i] == 'object')? Object.values(a.job[i]):a.job[i]
 
 					if(i=='priority'){
 						obj[j]+=' - ( '+Date.create(a.job[i]*1000).secondsAgo()+' seconds ago )'

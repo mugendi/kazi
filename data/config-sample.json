@@ -5,7 +5,22 @@
 		"client":"firebase",
 		"options":{
 			"data_url":"https://kazilogs.firebaseio.com"
-		}
+		},
+		"long_events":[
+			"jobUpdated",
+			"jobQueued",
+			"jobFinished",
+			"jobsCleared",
+			"jobType",
+			"jobRescheduled",
+			"clientServed",
+			"clientNotServed",
+			"clientJobRequest",
+			"clientListed",
+			"clientFreed",
+			"clientBusy",
+			"clientExists"
+		]
 
 		//You can also save job logs to Elastic Search if you wish to do other cool stuff like aggregations
 		// client:'elasticsearch',

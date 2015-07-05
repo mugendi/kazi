@@ -9,7 +9,8 @@ var request = require('request');
 var jobs=[];
 var jobTypes=[
 		'twitter',
-		'facebook'
+		'facebook',
+		'categoright'
 	];
 
 
