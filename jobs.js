@@ -13,7 +13,9 @@ var jobTypes=[
 		'categoright'
 	];
 
-
+//config 
+var config=require('../data/config.json');
+var KAZI_server= config.server || 'http://localhost:'+port
 
 /*Categoright*/
 jobs.push(
@@ -30,7 +32,7 @@ jobs.push(
 );
 
 var post={
-		url:'http://localhost:2016/queueJob', 
+		url:KAZI_server+'/queueJob', 
 		form: jobs
 }
 
