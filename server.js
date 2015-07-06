@@ -4,6 +4,7 @@ var _ = require('lodash');
 var ip = require('ip');
 var ip = ip.address();
 var moment = require('moment');
+var config=require('./data/config.json');
 
 var Queue=require('./lib/queue.js');
 
@@ -83,9 +84,7 @@ function event_msg(msg,client,job){
 	}
 }
 
-
-
-app.set('port', process.env.PORT || 2016);
+app.set('port', process.env.PORT || config.host.port || 2016);
 
 app.get('/' , function(req, res) {
 	res.end({
