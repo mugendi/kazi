@@ -14,7 +14,7 @@ var jobTypes=[
 	];
 
 //config 
-var config=require('../data/config.json');
+var config=require('./data/config.json');
 var KAZI_server= config.server || 'http://localhost:'+port
 
 /*Categoright*/
