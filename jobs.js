@@ -14,21 +14,20 @@ var jobTypes=[
 	];
 
 
-jobTypes.forEach(function(name,id){
-	
-	jobs.push(
-		{
-			priority:_.sample(['normal','high']) ,
-			id:name+':'+id+':'+(new Date().getTime()), //Twitter:1:1
-			name:name, //twitter
-			terminateJobAfter: (5*1000*60), //5 mins
-			delay:20
+
+/*Categoright*/
+jobs.push(
+	{
+		priority:'normal',
+		id:'categoright:getTitles',
+		name:'categoright',
+		terminateJobAfter: (10*1000*60), //10 mins
+		delay:0,
+		data:{
+			method:'getTitles'
 		}
-	);
-	
-});
-
-
+	}
+);
 
 var post={
 		url:'http://localhost:2016/queueJob', 

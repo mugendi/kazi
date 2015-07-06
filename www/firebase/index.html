@@ -34,8 +34,11 @@
     </div>
     
     <script>
+
+    var obj_size=0;
+
     $(function(){
-		var ref = new Firebase('https://kazilogs.firebaseio.com');
+		var ref = new Firebase('https://YOURURL.firebaseio.com');
 
    		var str=$('#messagesDiv').html();
 
@@ -63,15 +66,22 @@
 				for(var i in a.job){
 					j='job: '+i.replace(/job_?/ig,'');
 					// console.log(j)
-					obj[j]=(typeof a.job[i] == 'object')? Object.values(a.job[i]):a.job[i]
+					
 
 					if(i=='priority'){
-						obj[j]+=' - ( '+Date.create(a.job[i]*1000).secondsAgo()+' seconds ago )'
+						obj[j]=a.job[i]+' - ( '+Date.create(a.job[i]*1000).secondsAgo()+' seconds ago )'
+					}
+					else if(i=='data'){
+						obj[j]=decodeURIComponent(Object.toQueryString(a.job[i].data));
+					}
+					else{
+						obj[j]=(typeof a.job[i] == 'object')? Object.values(a.job[i]):a.job[i]
 					}
 				}
 			}
+
 			
-			if($('#messagesDiv table').length==0){
+			if( Object.size(obj) > obj_size){
 	
 				var html = '<table class="table table-bordered">';
 				$.each(obj, function(key, value){
@@ -90,6 +100,9 @@
 
 		        $('#messagesDiv').html(html);
 		        assign(obj)
+
+		        //hold size in memory...
+		        obj_size=Object.size(obj);
 			}
 			else{ assign(obj)		}
 			

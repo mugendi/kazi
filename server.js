@@ -96,7 +96,6 @@ app.get('/' , function(req, res) {
 
 app.post('/listclient' , function(req, res) {
 
-	console.log(req.body);
 
 	var client={
 		ip:ip,
