@@ -26,7 +26,34 @@
 		  <div class="panel-body">
 		    <p>This panel helps you visualize (via <a href="https://www.firebase.com" target="_blank">Firebase</a>) what Kazi is busy doing in near-realtime. </p>
 
-		     <div id='messagesDiv'> <h2>Loading Data. Please Wait...</h2></div>
+		    <div class="list-group">
+				<span href="#" class="list-group-item active"> Server Logs </span>
+		    	<div id='serverLogs'> <h2>Loading Data. Please Wait...</h2></div>
+		    
+		    </div>
+		    <div id='clientLogs'> 
+
+		     	<div class="list-group">
+					<span href="#" class="list-group-item active">
+						Message Logs
+					</span>
+
+			     	<ul class="list-group" id="logs">
+			     		
+			     	</ul>
+			    </div>
+
+			    <div class="list-group">
+					<span href="#" class="list-group-item active">
+						Error Logs
+					</span>
+
+			     	<ul class="list-group" id="errors">
+			     		
+			     	</ul>
+			    </div>
+
+		     </div>
 		  </div>
 
 		</div>
@@ -38,11 +65,12 @@
     var obj_size=0;
 
     $(function(){
-		var ref = new Firebase('https://kazilogs.firebaseio.com');
+		var serverRef = new Firebase('https://kazilogs.firebaseio.com');
+		var clientRef = new Firebase('https://clientlogs.firebaseio.com');
 
-   		var str=$('#messagesDiv').html();
+   		var str=$('#serverLogs').html();
 
-		ref.on("value", function(snapshot) {
+		serverRef.on("value", function(snapshot) {
 			var a = snapshot.exportVal();
 			var j=''
 			var obj={
@@ -98,7 +126,7 @@
 		        });
 		        html += '</table>';
 
-		        $('#messagesDiv').html(html);
+		        $('#serverLogs').html(html);
 		        assign(obj)
 
 		        //hold size in memory...
@@ -109,11 +137,38 @@
 		});
 
 		function assign(obj){
-			$('#messagesDiv table .value').each(function(){
+			$('#serverLogs table .value').each(function(){
 				var el=$(this);
 				el.text(el.data('assign').assign(obj).replace(/\{.+\}/,'--') )
 			})
 		}
+
+
+		/*Client logs*/
+
+		var max_list_size=10;
+		var logs_size=0;
+		var errors_size=0;
+
+		clientRef.on("value", function(snapshot) {
+			var a = snapshot.exportVal();
+
+			if(typeof a.log !=='undefined'){
+				$('#clientLogs #logs').prepend('<li class="list-group-item list-group-item-info">'+a.log+'</li>')
+
+				if(logs_size<max_list_size){ logs_size=$('#clientLogs #logs li').length; }
+				else{ $('#clientLogs #logs li:last-child').remove() }
+				
+			}
+			else if(typeof a.error !=='undefined'){
+
+				$('#clientLogs #errors').prepend('<li class="list-group-item list-group-item-danger">'+a.log+'</li>')
+
+				if(errors_size<max_list_size){ errors_size=$('#clientLogs #errors li').length; }
+				else{ $('#clientLogs #errors li:last-child').remove() }
+			}
+
+		})
     });
       
 
