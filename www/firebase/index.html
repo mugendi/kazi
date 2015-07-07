@@ -162,7 +162,7 @@
 			}
 			else if(typeof a.error !=='undefined'){
 
-				$('#clientLogs #errors').prepend('<li class="list-group-item list-group-item-danger">'+a.log+'</li>')
+				$('#clientLogs #errors').prepend('<li class="list-group-item list-group-item-danger">'+a.error+'</li>')
 
 				if(errors_size<max_list_size){ errors_size=$('#clientLogs #errors li').length; }
 				else{ $('#clientLogs #errors li:last-child').remove() }
