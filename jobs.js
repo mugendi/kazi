@@ -17,7 +17,7 @@ var jobTypes=[
 var config=require('./data/config.json');
 var KAZI_server= config.server || 'http://localhost:'+port
 
-/*Categoright*/
+/*Categoright
 jobs.push(
 	{
 		priority:'normal',
@@ -30,6 +30,23 @@ jobs.push(
 		}
 	}
 );
+*/
+
+/*twitter.tracking.update_users*/
+jobs.push(
+	{
+		priority:'normal',
+		id:'twitter.tracking.update_users',
+		name:'twitter.tracking.update_users',
+		terminateJobAfter: (10*1000*60), //10 mins
+		delay:0,
+		data:{
+			method:'updateUsers'
+		}
+	}
+);
+
+
 
 var post={
 		url:KAZI_server+'/queueJob', 
