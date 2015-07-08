@@ -18,6 +18,7 @@ var config=require('./data/config.json');
 var KAZI_server= config.server || 'http://localhost:'+port
 
 /*Categoright*/
+
 jobs.push(
 	{
 		priority:'normal',
@@ -30,7 +31,6 @@ jobs.push(
 		}
 	}
 );
-
 
 /*twitter.tracking.update_users*/
 jobs.push(
