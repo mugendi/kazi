@@ -9,3 +9,4 @@ data
 config.json
 data/config.json
 data/client-config.json
+jobs.js
