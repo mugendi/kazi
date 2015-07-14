@@ -42,6 +42,7 @@ var ipMiddleware = function(req, res, next) {
 	'jobFinished',
 	'jobsCleared',
 	'jobType',
+	'jobDeath',
 	'jobRescheduled',
 	'clientServed',
 	'clientNotServed',
@@ -123,6 +124,29 @@ app.post('/queuejob' , function(req, res) {
 		}
 		
 	});
+
+
+});
+
+
+app.post('/killJob' , function(req, res) {
+
+
+	if( _.has(req.body,'id')){
+		var ttl=parseFloat(req.body.ttl) || 0;
+
+		//call killJob
+		queue.killJob(req.body.id,ttl,function(err,diesAT){
+
+			console.log(diesAT)
+
+			res.send(_.merge(req.body,{diesAt:diesAT}))
+		
+		});
+
+	}
+
+	
 
 
 });

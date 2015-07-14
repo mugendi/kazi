@@ -71,40 +71,25 @@ jobs.push(
 )
 */
 
-jobs.push(
+var jobToKill=
 	{				
-		name:'twitter',
 		id:'twitter',
-		
-		job_id:'2.ecitizenke', //should be an interger but can be postfixed with '.Something.AnotherSomething'
-		_index:'tracking',
-		_type: 'twitter',
-		end_point:'streaming',
-		terms:['#ecitizenke'],
-		// ttl:30,
-
-		data:{			
-			max_id:0,
-			since_id:0,						
-		}
+		ttl:5
 	}
-)
+
 
 
 var post={
-		url:KAZI_server+'/queueJob', 
-		form: jobs
+		url:KAZI_server+'/killJob', 
+		form: jobToKill
 }
 
-
-console.log(post);
 
 
 // //first register client
 request.post(post, function(err,httpResponse,body){ 
 	if(body){
 		console.log(body)
-	}
-			
+	}			
 });
 
