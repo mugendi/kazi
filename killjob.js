@@ -73,7 +73,7 @@ jobs.push(
 
 var jobToKill=
 	{				
-		id:'twitter',
+		id:'twitter.tracking.trending',
 		ttl:5
 	}
 

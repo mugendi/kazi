@@ -50,6 +50,9 @@ jobs.push(
 );
 */
 
+
+
+
 /*
 
 jobs.push(
@@ -71,25 +74,21 @@ jobs.push(
 )
 */
 
+/*twitter.tracking.update_users*/
 jobs.push(
-	{				
-		name:'twitter',
-		id:'twitter',
-		
-		job_id:'2.ecitizenke', //should be an interger but can be postfixed with '.Something.AnotherSomething'
-		_index:'tracking',
-		_type: 'twitter',
-		end_point:'streaming',
-		terms:['#ecitizenke'],
-		// ttl:30,
-
-		data:{			
-			max_id:0,
-			since_id:0,						
+	{
+		priority:'normal',
+		id:'twitter.tracking.trending',
+		name:'twitter.tracking.trending',
+		terminateJobAfter: (10*1000*60), //10 mins
+		delay:0,
+		ttl: (60*60*3),//kill job after 3 hours
+		data:{
+			locale:'ke',
+			woeid:1528488 //2345940
 		}
 	}
-)
-
+);
 
 var post={
 		url:KAZI_server+'/queueJob', 

@@ -25,6 +25,7 @@
     "chokidar": "^1.0.3",
     "clear-require": "^1.0.1",
     "cluster": "^0.7.7",
+    "cors": "^2.7.1",
     "domain": "0.0.1",
     "elasticsearch": "^5.0.0",
     "events": "^1.0.2",

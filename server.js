@@ -5,6 +5,8 @@ var ip = require('ip');
 var ip = ip.address();
 var moment = require('moment');
 var config=require('./data/config.json');
+var cors = require('cors');
+
 
 var Queue=require('./lib/queue.js');
 
@@ -26,6 +28,9 @@ app.use( bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 })); 
+
+//cors
+app.use(cors());
 
 
 
