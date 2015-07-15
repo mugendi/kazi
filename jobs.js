@@ -74,10 +74,8 @@ jobs.push(
 	}
 )
 
-jobs=[]
 
-
-/*twitter.tracking.update_users*/
+/*twitter.tracking.trending*/
 jobs.push(
 	{
 		priority:'normal',
@@ -92,6 +90,28 @@ jobs.push(
 		}
 	}
 );
+
+// jobs=[]
+
+
+/*twitter.tracking.engagement*/
+jobs.push(
+	{
+		priority:'normal',
+		id:'twitter.tracking.engagement',
+		name:'twitter.tracking.engagement',
+		terminateJobAfter: (10*1000*60), //10 mins
+		delay:0,
+		ttl: (60*60*3),//kill job after 3 hours
+		data:{
+			locale:'ke',
+			woeid:1528488 //2345940
+		}
+	}
+);
+
+
+
 
 var post={
 		url:KAZI_server+'/queueJob', 
