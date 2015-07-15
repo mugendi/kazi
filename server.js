@@ -88,7 +88,7 @@ function event_msg(msg,client,job){
 	}
 }
 
-app.set('port', process.env.PORT || config.host.port || 2016);
+
 
 app.get('/' , function(req, res) {
 	res.end({
@@ -205,12 +205,27 @@ app.post('/updateJob' , function(req, res) {
 app.use('/firebase',express.static(path.join(__dirname, 'www','firebase'),{}));
 
 
+//set port
+app.set('port', (config.host.port ||  process.env.PORT ||  2016) );
 
 
 /*
 	start listening...
 */
-app.listen(app.get('port'), function() {
-  console.log('Express server listening on port ' + app.get('port'));
+app.listen(app.get('port'), function(err) {
+
+	if (err) return cb(err);
+
+    // Find out which user used sudo through the environment variable
+    var uid = parseInt(process.env.SUDO_UID);
+    // console.log(uid);
+
+     // Set our server's uid to that user
+    if (uid){
+    	process.setuid(uid);
+    	console.log('Server\'s UID is now ' + uid );
+    }
+
+  	console.log('Express server listening on port ' + app.get('port'));
 });
 

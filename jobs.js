@@ -56,6 +56,40 @@ jobs.push(
 
 /**/
 
+
+
+/*twitter.tracking.trending*/
+jobs.push(
+	{
+		priority:'normal',
+		id:'twitter.tracking.trending',
+		name:'twitter.tracking.trending',
+		terminateJobAfter: (10*1000*60), //10 mins
+		delay:0,
+		data:{
+			locale:'ke',
+			woeid:1528488 //2345940
+		}
+	}
+);
+
+// 
+
+
+/*twitter.tracking.engagement*/
+jobs.push(
+	{
+		priority:'normal',
+		id:'twitter.tracking.engagement',
+		name:'twitter.tracking.engagement',
+		terminateJobAfter: (10*1000*60), //10 mins
+		delay:0,
+		data:{}
+	}
+);
+
+
+
 jobs.push(
 	{				
 		name:'twitter.tracking.track',
@@ -74,41 +108,20 @@ jobs.push(
 	}
 )
 
+jobs=[]
 
-/*twitter.tracking.trending*/
+/*twitter.tracking.shorturls*/
 jobs.push(
 	{
 		priority:'normal',
-		id:'twitter.tracking.trending',
-		name:'twitter.tracking.trending',
+		id:'twitter.tracking.shorturls',
+		name:'twitter.tracking.shorturls',
 		terminateJobAfter: (10*1000*60), //10 mins
 		delay:0,
-		ttl: (60*60*3),//kill job after 3 hours
-		data:{
-			locale:'ke',
-			woeid:1528488 //2345940
-		}
+		data:{}
 	}
 );
 
-// jobs=[]
-
-
-/*twitter.tracking.engagement*/
-jobs.push(
-	{
-		priority:'normal',
-		id:'twitter.tracking.engagement',
-		name:'twitter.tracking.engagement',
-		terminateJobAfter: (10*1000*60), //10 mins
-		delay:0,
-		ttl: (60*60*3),//kill job after 3 hours
-		data:{
-			locale:'ke',
-			woeid:1528488 //2345940
-		}
-	}
-);
 
 
 
