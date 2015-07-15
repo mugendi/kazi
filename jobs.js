@@ -15,10 +15,11 @@ var jobTypes=[
 
 //config 
 var config=require('./data/config.json');
-var KAZI_server= config.server || 'http://localhost:'+port
-var KAZI_server= config.server || 'http://23.254.129.120:'+port
+var KAZI_server= (!_.isUndefined(config.host) && (!_.isUndefined(config.host.url) && !_.isUndefined(config.host.port)))? config.host.url+':'+config.host.port : 'http://localhost:' + (config.host.port || 2016);
 
-/*Categoright
+console.log(KAZI_server)
+
+/*Categoright*/
 
 jobs.push(
 	{
@@ -32,10 +33,10 @@ jobs.push(
 		}
 	}
 );
-*/
 
 
-/*twitter.tracking.update_users
+
+/*twitter.tracking.update_users*/
 jobs.push(
 	{
 		priority:'normal',
@@ -48,12 +49,12 @@ jobs.push(
 		}
 	}
 );
-*/
 
 
 
 
-/*
+
+/**/
 
 jobs.push(
 	{				
@@ -72,7 +73,9 @@ jobs.push(
 		}
 	}
 )
-*/
+
+jobs=[]
+
 
 /*twitter.tracking.update_users*/
 jobs.push(
