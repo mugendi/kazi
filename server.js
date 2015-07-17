@@ -15,7 +15,7 @@ var options={
 	// timeoutLazyClientsFor:3600,
 	// expireClientsAfter:timeoutLazyClientsFor/1000,
 	strictFIFO:true,
-	rescheduleStuckJobsAfter:30
+	rescheduleStuckJobsAfter:600 //10 mins
 }
 
 var queue = new Queue(options);
@@ -24,9 +24,13 @@ var queue = new Queue(options);
 var app = express();
 
 var bodyParser = require('body-parser')
-app.use( bodyParser.json() );       // to support JSON-encoded bodies
-app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
-  extended: true
+
+app.use( bodyParser.json({limit: '10mb',parameterLimit: 50000}) );       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded(
+{     
+  extended: true,// to support URL-encoded bodies
+  limit: '10mb',
+  parameterLimit: 50000
 })); 
 
 //cors
@@ -164,7 +168,8 @@ app.post('/requestjob' , function(req, res) {
 
 	//listClient
 	queue.requestJob(client,function(err,job){
-		// console.log(job)
+		// console.log(JSON.stringify(job))
+		
 		if(err){
 			res.send({});			
 		}
@@ -188,6 +193,7 @@ app.post('/finishJob' , function(req, res) {
 });
 
 app.post('/updateJob' , function(req, res) {
+
 	//update job
 	queue.updateJob(req.body.client,req.body.job,req.body.result,function(err,updated){
 		res.send(updated?{msg:'Success',code:200}:{msg:'Error',code:400});
@@ -203,6 +209,15 @@ app.post('/updateJob' , function(req, res) {
 
 
 app.use('/firebase',express.static(path.join(__dirname, 'www','firebase'),{}));
+
+
+app.get('/aggs' , function(req, res) {
+	//update job
+	
+
+	res.send(req.params)
+
+});
 
 
 //set port

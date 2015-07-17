@@ -6,7 +6,7 @@
 		"options":{
 			"data_url":"https://YOURLINK.firebaseio.com"
 		},
-		"long_events":[
+		"log_events":[
 			"jobUpdated",
 			"jobQueued",
 			"jobFinished",

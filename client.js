@@ -3,7 +3,7 @@ var path=require('path')
 var client=require('./lib/workers.js');
 
 var workers_path=path.join(__dirname,'workers');
-var jobIds=['categoright.*','twitter.*']
+var jobIds=['categoright.*','twitter.*','es.*']
 
 var cluster = require('cluster');
 var numCPUs = require('os').cpus().length;

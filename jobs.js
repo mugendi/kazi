@@ -95,7 +95,7 @@ jobs.push(
 		name:'twitter.tracking.track',
 		id:'twitter:1:ecitizenke',
 		
-		job_id:'2.ecitizenke', //should be an interger but can be postfixed with '.Something.AnotherSomething'
+		job_id:'2', //should be an interger but can be postfixed with '.Something.AnotherSomething'
 		_index:'tracking',
 		_type: 'twitter',
 		end_point:'streaming',
@@ -108,7 +108,7 @@ jobs.push(
 	}
 )
 
-jobs=[]
+
 
 /*twitter.tracking.shorturls*/
 jobs.push(
@@ -124,6 +124,66 @@ jobs.push(
 
 
 
+/*twitter.tracking.track_trend*/
+jobs.push(
+	{
+		priority:'normal',
+		id:'twitter.tracking.track_trend',
+		name:'twitter.tracking.track_trend',
+		terminateJobAfter: (10*1000*60), //10 mins
+		delay:0,
+		data:{
+			locale:'ke'
+		}
+	}
+);
+
+
+
+/*twitter.tracking.engagement*/
+jobs.push(
+	{
+		priority:'normal',
+		id:'twitter.tracking.engagement',
+		name:'twitter.tracking.engagement',
+		terminateJobAfter: (10*1000*60), //10 mins
+		delay:0,
+		data:{}
+	}
+);
+
+jobs.push(
+	{
+		priority:'normal',
+		id:'twitter.tracking.update_empty_engagement',
+		name:'twitter.tracking.update_empty_engagement',
+		terminateJobAfter: (10*1000*60), //10 mins
+		delay:0,
+		data:{}
+	}
+);
+
+jobs=[]
+
+jobs.push(
+	{				
+		name:'twitter.tracking.track',
+		id:'twitter:1:ecitizenke',
+		
+		job_id:'2', //should be an interger but can be postfixed with '.Something.AnotherSomething'
+		_index:'tracking',
+		_type: 'twitter',
+		end_point:'streaming',
+		terms:['#ecitizenke'],
+
+		data:{			
+			max_id:0,
+			since_id:0,	
+			// max_idle_duration:(3600*3)					
+		}
+	}
+)
+
 
 
 var post={
@@ -132,7 +192,7 @@ var post={
 }
 
 
-console.log(post);
+console.log(JSON.stringify(post,0,4));
 
 
 // //first register client
