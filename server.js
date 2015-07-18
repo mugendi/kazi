@@ -59,16 +59,17 @@ var ipMiddleware = function(req, res, next) {
 	'clientListed',
 	'clientFreed',
 	'clientBusy',
-	'clientExists'
+	'clientExists',
+	'memoryInfo'
 ]
 .forEach(function(evt){
 
-	queue.on(evt, function(msg,client,job){
+	queue.on(evt, function(msg,client,job,info){
 		if(!job){
 			job=_.clone(client);
 		}
 
-		event_msg(msg,client,job);
+		event_msg(msg,client,job,info);
 	});
 
 });
@@ -78,18 +79,17 @@ function now(){
 	return moment().format('MMMM Do YYYY, h:mm:ss a');
 }
 
-function event_msg(msg,client,job){
+function event_msg(msg,client,job,info){
 	// console.log(msg,client,job);
 
-	if(!_.isUndefined(job) && !_.isUndefined(job.id)){
+	if(!_.isUndefined(job) ){
 		console.log(' > '+'['+now()+'] '+ msg + ( !_.isUndefined(job.id) ? ' [JOB:ID '+ job.id +']': ''));
-
 	}
 	else{
-
 		// console.log(job);
 		console.log(' > '+'['+now()+'] '+ msg );
 	}
+	
 }
 
 
