@@ -77,8 +77,19 @@
 				msg:a.msg
 			}
 
+
+
 			//table seperator row
 			obj['-']=''
+
+			if(typeof a.info !=='undefined'){
+				for(var i in a.info){
+					j='info: '+i;
+					obj[j]=(typeof a.info[i] == 'object')? Object.values(a.info[i]): a.info[i]
+				}
+			}
+
+			obj['--']=''
 
 			if(typeof a.client !=='undefined'){
 				for(var i in a.client){
@@ -88,7 +99,7 @@
 			}
 
 			//table seperator ro
-			obj['--']=''
+			obj['---']=''
 
 			if(typeof a.job !=='undefined'){
 				for(var i in a.job){
