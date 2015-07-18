@@ -139,7 +139,7 @@ jobs.push(
 // );
 
 
-jobs=[]
+// jobs=[]
 
 jobs.push(
 	{
