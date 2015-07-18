@@ -124,17 +124,31 @@ jobs.push(
 
 
 
-/*twitter.tracking.track_trend*/
+// /*twitter.tracking.track_trend*/
+// jobs.push(
+// 	{
+// 		priority:'normal',
+// 		id:'twitter.tracking.track_trend',
+// 		name:'twitter.tracking.track_trend',
+// 		terminateJobAfter: (10*1000*60), //10 mins
+// 		delay:0,
+// 		data:{
+// 			locale:'ke'
+// 		}
+// 	}
+// );
+
+
+jobs=[]
+
 jobs.push(
 	{
 		priority:'normal',
-		id:'twitter.tracking.track_trend',
-		name:'twitter.tracking.track_trend',
+		id:'twitter.tracking.update_empty_engagement',
+		name:'twitter.tracking.update_empty_engagement',
 		terminateJobAfter: (10*1000*60), //10 mins
 		delay:0,
-		data:{
-			locale:'ke'
-		}
+		data:{}
 	}
 );
 
@@ -152,37 +166,7 @@ jobs.push(
 	}
 );
 
-jobs.push(
-	{
-		priority:'normal',
-		id:'twitter.tracking.update_empty_engagement',
-		name:'twitter.tracking.update_empty_engagement',
-		terminateJobAfter: (10*1000*60), //10 mins
-		delay:0,
-		data:{}
-	}
-);
 
-jobs=[]
-
-jobs.push(
-	{				
-		name:'twitter.tracking.track',
-		id:'twitter:1:ecitizenke',
-		
-		job_id:'2', //should be an interger but can be postfixed with '.Something.AnotherSomething'
-		_index:'tracking',
-		_type: 'twitter',
-		end_point:'streaming',
-		terms:['#ecitizenke'],
-
-		data:{			
-			max_id:0,
-			since_id:0,	
-			// max_idle_duration:(3600*3)					
-		}
-	}
-)
 
 
 
