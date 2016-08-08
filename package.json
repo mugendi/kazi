@@ -6,7 +6,7 @@
     ]
   ],
   "_from": "kazi@latest",
-  "_id": "kazi@0.0.9",
+  "_id": "kazi@1.0.0",
   "_inCache": true,
   "_installable": true,
   "_location": "/kazi",
@@ -47,6 +47,7 @@
     "arrify": "^1.0.1",
     "async": "^2.0.1",
     "bee-queue": "^0.3.0",
+    "bee-queue-ui": "^0.2.2",
     "joi": "^9.0.4"
   },
   "description": "RESTFul Job-Queue Server with API to serve jobs to remote workers. Workers connect, identify themselves &amp; request to be allocated work. The server allocates work through a Priority Job Queue or FIFO Job Queue. ",
