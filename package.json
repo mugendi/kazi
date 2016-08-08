@@ -1,18 +1,65 @@
 {
-  "name": "kazi",
-  "version": "0.0.9",
+  "_args": [
+    [
+      "kazi",
+      "E:\\projects\\Node\\account-analytics"
+    ]
+  ],
+  "_from": "kazi@latest",
+  "_id": "kazi@0.0.9",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/kazi",
+  "_nodeVersion": "6.2.0",
+  "_npmOperationalInternal": {
+    "host": "packages-16-east.internal.npmjs.com",
+    "tmp": "tmp/kazi-0.0.9.tgz_1470659710982_0.2874862791504711"
+  },
+  "_npmUser": {
+    "email": "ngurumugz@gmail.com",
+    "name": "nguru"
+  },
+  "_npmVersion": "3.8.8",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "kazi",
+    "raw": "kazi",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_shasum": "970e9c0509d485f1246e285ab2a6b8210c1c9121",
+  "_shrinkwrap": null,
+  "_spec": "kazi",
+  "_where": "E:\\projects\\Node\\account-analytics",
+  "author": {
+    "email": "ngurumugz@gmail.com",
+    "name": "Athony Mugendi"
+  },
+  "bugs": {
+    "url": "https://github.com/mugendi/kazi/issues"
+  },
+  "dependencies": {
+    "arrify": "^1.0.1",
+    "async": "^2.0.1",
+    "bee-queue": "^0.3.0",
+    "joi": "^9.0.4"
+  },
   "description": "RESTFul Job-Queue Server with API to serve jobs to remote workers. Workers connect, identify themselves &amp; request to be allocated work. The server allocates work through a Priority Job Queue or FIFO Job Queue. ",
-  "main": "lib/kazi.js",
+  "devDependencies": {},
   "directories": {
     "test": "tests"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "dist": {
+    "shasum": "970e9c0509d485f1246e285ab2a6b8210c1c9121",
+    "tarball": "https://registry.npmjs.org/kazi/-/kazi-0.0.9.tgz"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mugendi/kazi.git"
-  },
+  "gitHead": "a3629b4f2802da340c0dddf5b3e8ddc4c057008f",
+  "homepage": "https://github.com/mugendi/kazi#readme",
   "keywords": [
     "job",
     "scheduler",
@@ -22,16 +69,23 @@
     "distributed",
     "workers"
   ],
-  "author": "Athony Mugendi <ngurumugz@gmail.com>",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/mugendi/kazi/issues"
+  "main": "lib/kazi.js",
+  "maintainers": [
+    {
+      "email": "ngurumugz@gmail.com",
+      "name": "nguru"
+    }
+  ],
+  "name": "kazi",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mugendi/kazi.git"
   },
-  "homepage": "https://github.com/mugendi/kazi#readme",
-  "dependencies": {
-    "arrify": "^1.0.1",
-    "async": "^2.0.1",
-    "bee-queue": "^0.3.0",
-    "joi": "^9.0.4"
-  }
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.0.9"
 }

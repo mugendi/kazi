@@ -10,6 +10,10 @@ Q.requestJob( queue, options, function( job, done ){
   //use data to execute job, ideally all required job variables and instructions should be saved here
   //....
 
+
+  //finish job
+  done();
+
   //update job & reschedule
   job.data.updated_time = new Date();
   var newJob = {
