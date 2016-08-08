@@ -1,12 +1,3 @@
-.gitignore
-.DS_Store
-jobs.js
-
-# Node.js #
-###########
 node_modules
-workers
-data
-config.json
-data/config.json
-data/client-config.json
+*.ico
+*.ini

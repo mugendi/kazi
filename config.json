@@ -1,0 +1,16 @@
+{
+    "retries" : 10,
+    "prefix": "bq",
+    "stallInterval": 5000,
+    "redis": {
+      "host": "127.0.0.1",
+      "port": 6379,
+      "db": 0,
+      "options": {}
+    },
+    "getEvents": true,
+    "isWorker": true,
+    "sendEvents": true,
+    "removeOnSuccess": "false",
+    "catchExceptions": false
+}

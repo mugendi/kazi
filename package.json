@@ -1,47 +1,37 @@
 {
   "name": "kazi",
-  "version": "0.0.2",
-  "description": "RESTFul Job-Queue Server with API to serve jobs to remote workers. Workers connect, identify themselves & request to be allocated work. The server allocates work through a Priority Job Queue or FIFO Job Queue. Workers report when they finish jobs or are banned (timeout) from accessing more jobs!",
-  "main": "server.js",
+  "version": "1.0.0",
+  "description": "RESTFul Job-Queue Server with API to serve jobs to remote workers. Workers connect, identify themselves &amp; request to be allocated work. The server allocates work through a Priority Job Queue or FIFO Job Queue. ",
+  "main": "lib/kazi.js",
+  "directories": {
+    "test": "tests"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mugendi/kazi.git"
+  },
   "keywords": [
     "job",
-    "jobs",
+    "scheduler",
+    "schedule",
     "queue",
-    "jobqueue",
-    "workers",
-    "server",
-    "restful",
-    "api",
-    "work"
+    "redis",
+    "distributed",
+    "workers"
   ],
-  "author": "Anthony Mugendi (ngurumugz@gmail.com)",
+  "author": "Athony Mugendi <ngurumugz@gmail.com>",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mugendi/kazi/issues"
+  },
+  "homepage": "https://github.com/mugendi/kazi#readme",
   "dependencies": {
-    "body-parser": "^1.12.4",
-    "chance": "^0.7.5",
-    "chokidar": "^1.0.3",
-    "clear-require": "^1.0.1",
-    "cluster": "^0.7.7",
-    "cors": "^2.7.1",
-    "domain": "0.0.1",
-    "elasticsearch": "^5.0.0",
-    "events": "^1.0.2",
-    "express": "^4.12.4",
-    "firebase": "^2.2.7",
-    "ip": "^0.3.3",
-    "jsonfile": "^2.2.1",
-    "lodash": "^3.9.3",
-    "moment": "^2.10.3",
-    "path": "^0.11.14",
-    "redis": "^0.12.1",
-    "redis-scanstreams": "^1.0.3",
-    "request": "^2.57.0",
-    "shelljs": "^0.5.1",
-    "stream-to-array": "^2.0.2",
-    "truely": "0.0.2",
-    "util": "^0.10.3"
+    "arrify": "^1.0.1",
+    "async": "^2.0.1",
+    "bee-queue": "^0.3.0",
+    "joi": "^9.0.4"
   }
 }
