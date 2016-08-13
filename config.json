@@ -12,5 +12,6 @@
     "isWorker": true,
     "sendEvents": true,
     "removeOnSuccess": "false",
-    "catchExceptions": false
+    "catchExceptions": false,
+    "debug" : true
 }
