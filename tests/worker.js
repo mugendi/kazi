@@ -17,7 +17,11 @@ Q.requestJob( queue, options, function( job, done, client ){
   done();
 
   //update job & reschedule
+  //set jobId of job....
+  // job.data.jobId = 'search:user:365374o4809570';
+
   job.data.updated_time = new Date();
+
   var newJob = {
     queue : "facebook",
     data : job.data

@@ -1,0 +1,5 @@
+This is a modified version of bee-queue.
+
+It is used kazi to handle some issues like dealing with duplicate jobs not yet handled in bee-queue
+
+Will work with the maintainers of bee-queue to have these changes adopted into the main bee-queue project but in the meantime, this will remain here...
